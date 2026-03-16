@@ -7,7 +7,7 @@ void main() {
     home: DiceThrowScreen(),
   ));
 }
-// deneme test 2
+// deneme test 3
 class DiceThrowScreen extends StatefulWidget {
   const DiceThrowScreen({super.key});
 
