@@ -11,20 +11,23 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_deneme/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  testWidgets('Dice throw screen smoke test', (WidgetTester tester) async {
     await tester.pumpWidget(const MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify initial throw button is shown.
+    expect(find.text('Zar At 🎲'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    // Verify initial dice value is visible.
+    expect(find.textContaining('Sonuç:'), findsOneWidget);
+
+    // Ensure dice face is present before tapping.
+    expect(find.byType(Container), findsWidgets);
+
+    // Tap the throw button and verify animation begins.
+    await tester.tap(find.text('Zar At 🎲'));
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text('Atılıyor...'), findsOneWidget);
+    expect(find.textContaining('Sonuç:'), findsOneWidget);
   });
 }
